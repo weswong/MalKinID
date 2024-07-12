@@ -1,0 +1,2 @@
+# MalKinID
+ Malaria Kinship Identifier
