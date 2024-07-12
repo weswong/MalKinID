@@ -1,0 +1,5 @@
+comparison	relatedness	1:n_ibd	2:n_ibd	3:n_ibd	4:n_ibd	5:n_ibd	6:n_ibd	7:n_ibd	8:n_ibd	9:n_ibd	10:n_ibd	11:n_ibd	12:n_ibd	13:n_ibd	14:n_ibd	1:max_ibd	2:max_ibd	3:max_ibd	4:max_ibd	5:max_ibd	6:max_ibd	7:max_ibd	8:max_ibd	9:max_ibd	10:max_ibd	11:max_ibd	12:max_ibd	13:max_ibd	14:max_ibd
+s1:s2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+s2:s3	0.305	1	1	1	2	2	2	1	3	2	5	2	2	2	2	0.206	0.591	0.166	0.308	0.193	0.163	0.11	0.358	0.1	0.088	0.176	0.242	0.059	0.271
+s4:s5	0.291	1	1	1	2	2	2	1	3	2	4	2	2	1	2	0.206	0.591	0.166	0.308	0.193	0.163	0.11	0.358	0.1	0.083	0.176	0.242	0.056	0.271
+s6:s7	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
