@@ -1,7 +1,7 @@
 # MalKinID
  Malaria Kinship Identifier
 
-MalKinID (Malaria Kinship Identifier) is a  likelihood-based classification model designed to identify genealogical relationships among malaria parasites based on genome-wide IBD proportions and IBD segment distributions. MalKinID was calibrated to the genomic data from three laboratory-based genetic crosses (yielding 440 parent-child and 9060 full-sibling comparisons).![image](https://github.com/user-attachments/assets/a00e63ed-e266-48da-a1ea-c4c7c92b330f)
+MalKinID (Malaria Kinship Identifier) is a  likelihood-based classification model designed to identify genealogical relationships among malaria parasites based on genome-wide IBD proportions and IBD segment distributions. MalKinID was calibrated to the genomic data from three laboratory-based genetic crosses (yielding 440 parent-child and 9060 full-sibling comparisons)
 
 
 By default, MalKinID infers the genealogical relationship between two parasite strains based on the total relatedness (total proportion of genome that is IBD), and the per-chromosome IBD segment block and segment count distributions. 
