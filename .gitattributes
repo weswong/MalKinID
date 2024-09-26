@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*seq_ibdhmm_results.txt.zip filter=lfs diff=lfs merge=lfs -text
+Mal31xKH004_seq_ibdhmm_results.txt.zip filter=lfs diff=lfs merge=lfs -text
+NF54_NHP4026_F2_seq_ibdhmm_results.txt.zip filter=lfs diff=lfs merge=lfs -text
+NF54_NHP4026_control_seq_ibdhmm_results.txt.zip filter=lfs diff=lfs merge=lfs -text
