@@ -18,6 +18,9 @@ Log-likelihood estimation is achieved by the calc_all_likelihoods() function. Th
 
 
 Pedigree Tree Simulation
+These are template code that wil be streamlined in a later public release. Address questions to weswong@hsph.harvard.edu
+These code are only relevant when wanting to re-adapt MalKinID to infer genealogical relationships on non-outcrossing/inbred trees.
+
 Template code to run the meiosis model based on a specified pedigree is provided /sim_serial_cotx_chain.py. To specify the pedigree, modify the simulate_pedigree function (lines 211-249). The pedigree tree is specified as a flat dictionary where the keys are the name of the node and the value the examined genome. Simulated parasites are generated using the the meiosis function (line 226). 
 
 Simulated progeny are generated using the meiosis function (meiosis(in1,in2,N=4,v=2, oc=True, bp_per_cM = 11300)), where the first two arguments are the genomes generated from the Genome subpackage (make sure that the Genome subpackage location is specified at line 26). These genomes are numpy arrays where the elements are integers indicating parental origin. For example, parent1 can be represented by a vector of zeros and parent2 a vector of ones. Recombinant progeny will of parent1 and parent2 contain a mix zeros and ones. sim_serial_cotx_chain.py takes in one argument that specifies the simulation iteration -- this is purely for annotation purposes to allow one to run multiple simulations in parallel and keep track of the outputs associated with each iteration.
@@ -27,10 +30,11 @@ For meiotic siblings (lines 233-237), N should be set to 2. The output will be a
 
 This will generate several outputs that contain the simulated distributions for each pairwise combination in the tree as a json file. For the r_total distributions, the json is a one level dictionary where the keys of the first layer describes the examined comparisons (which by default simply combine the names of the node. For the other features (simulation_ibd_segment_max and simulation_ibd_n_segment), the json is a two layer dictionary where the first key describes the comparison, and the second layer the chromosome.
 
-These raw simulation outputs can be fit to the components of the pseudolikelihood by adapting the first few code cells of http://localhost:8888/notebooks/notebooks/Likelihood_functions_simulation.ipynb. This code assumes that all the simulation results are in a common directory. The task is to consolidate the simulation results for each feature into a single dictionary that aggregates the results from all simulation iterations.
+These raw simulation outputs can be fit to the components of the pseudolikelihood by adapting the first few code cells of [http://localhost:8888/notebooks/notebooks/Likelihood_functions_simulation.ipynb](https://github.com/weswong/MalKinID/blob/main/sims/distribution_fitting_template.ipynb). This code assumes that all the simulation results are in a common directory. The task is to consolidate the simulation results for each feature into a single dictionary that aggregates the results from all simulation iterations.
 Once aggregated, the code will fit the components of the pseudolikelihood model to the raw data using the following functions: fit_beta (r_total), create_pdfs (max IBD segment block), and calc_seg_count_pmf(n_segment_distribution).
+These can be dumped into a dill file to be loaded later.
 
-These results are then integrated into the Sim class to as components of the likelihood function.
+These results are then integrated into the Sim class as components of the likelihood function to begin performing classification. The most likely classification is defined as the one that has the highest pseudolikelihood.
 
 
 
