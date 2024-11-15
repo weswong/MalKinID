@@ -254,16 +254,6 @@ class Simulation:
         for combo in itertools.combinations(self.pedigree_dict.keys(), 2):
             n1,n2 = combo
             relationships[n1 + '.' + n2] = (n1, n2)
-        #relationships['B1.P1'] = ('B1', 'P1') # parent-child
-        #relationships['GC'] = ('m01', 'm21') # grandparent-grandchild
-        #relationships['GGC'] = ('m01', 'm31') # great grandparent-great grandchild
-        #relationships['FS'] = ('m11', 'm12') # full sibling
-        #relationships['MS'] = ('m11', 'm12') # full sibling
-        #relationships['HS'] = ('a11', 'm12') # half sibling
-        #relationships['FAV'] = ('m12', 'm21') # full avuncular
-        #relationships['HAV'] = ('a11', 'm21') # half avuncular
-        #relationships['FCS'] = ('m21', 'm22') # full cousin
-        #relationships['F2'] = ('f11', 'f12') #breeding between full siblings
         return relationships
     
     def calculate_ibd_segment_boundaries(self, ibd_map, chrom_n): # position map is entire chromosome
@@ -383,16 +373,6 @@ class Simulation:
         self.max_ibd_segment_lengths = max_ibd_segment_lengths
         self.r_chrom = r_chrom
 
-    #def plot_ibd_segments(self, relationship):
-    #    plt.figure(figsize = (15, 10))
-    #    for chrom_n in range(1,15):
-    #        ibd_map = self.ibd_maps[relationship][chrom_n]
-    #        plt.subplot(3,5,chrom_n)
-    #        plt.suptitle(relationship)
-    #        plt.title(chrom_n)
-    #        plt.plot(range(len(ibd_map)), ibd_map)
-    #        plt.ylim(-0.05,1.05)
-            
 # Checking and unit testing ------------------------------------
     def calculate_dbd_block_length(self, ibd_segment_boundaries, chrom):
         dbd_block_lengths = []

@@ -221,16 +221,9 @@ class Simulation:
     
     def name_relationships(self):
         relationships = {}
-        relationships['PC'] = ('m01', 'm11') # parent-child
-        relationships['GC'] = ('m01', 'm21') # grandparent-grandchild
-        relationships['GGC'] = ('m01', 'm31') # great grandparent-great grandchild
-        relationships['FS'] = ('m11', 'm12') # full sibling
-        relationships['MS'] = ('m11', 'm12') # full sibling
-        relationships['HS'] = ('a11', 'm12') # half sibling
-        relationships['FAV'] = ('m12', 'm21') # full avuncular
-        relationships['HAV'] = ('a11', 'm21') # half avuncular
-        relationships['FCS'] = ('m21', 'm22') # full cousin
-        relationships['F2'] = ('f11', 'f12') #breeding between full siblings
+        for combo in itertools.combinations(self.pedigree_dict.keys(), 2):
+            n1,n2 = combo
+            relationships[n1 + '.' + n2] = (n1, n2)
         return relationships
     
     def calculate_ibd_segment_boundaries(self, ibd_map, chrom_n): # position map is entire chromosome
@@ -397,15 +390,15 @@ class NumpyEncoder(json.JSONEncoder):
 
 
 if __name__ == '__main__':
-    v = float(sys.argv[1])
-    kbp_cM = float(sys.argv[2])
-    relationship_type = sys.argv[3]
+    v = 2
+    kbp_cM = 11.3
+    relationship_type = sys.argv[1]
     if relationship_type == 'MS': #flag for meiotic sibling (MS) or full sibling (FS)
         meioticsibling_param = True
     else:
         meioticsibling_param = False
 
-    iteration = sys.argv[4]
+    iteration = sys.argv[2]
 
 
     # running and storing sim results
@@ -434,6 +427,5 @@ if __name__ == '__main__':
     json.dump(simulation_ibd_segment_lengths, open(file_basename + '_ibd_segment_lengths.json', 'w'), cls = NumpyEncoder)
     json.dump(simulation_r_totals, open(file_basename + '_r_totals.json', 'w'), cls = NumpyEncoder)
     json.dump(simulation_ibd_segment_numbers, open(file_basename +'_ibd_segment_numbers.json', 'w'), cls = NumpyEncoder)
-    #json.dump(simulation_ibd_segment_boundaries, open(file_basename +'_ibd_segment_boundaries.json', 'w'), cls = NumpyEncoder)
     json.dump(simulation_ibd_segment_max, open(file_basename + '_ibd_segment_max.json', 'w'), cls = NumpyEncoder)
     json.dump(simulation_r_chrom, open(file_basename+ '_r_chrom.json','w'),cls = NumpyEncoder)
